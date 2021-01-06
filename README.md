@@ -62,3 +62,7 @@ rails s --help
 ```
 rails s
 ```
+
+### rails MVC
+
+https://guides.rubyonrails.org/getting_started.html
