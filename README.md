@@ -65,4 +65,21 @@ rails s
 
 ### rails MVC
 
-https://guides.rubyonrails.org/getting_started.html
+https://guides.rubyonrails.org/getting_started.html  
+
+
+##### config/routes.rb
+```ruby
+Rails.application.routes.draw do
+  get "/", to: "todo#index"
+end
+```
+
+```
+rails generate controller Todo index --skip-routes
+```
+
+##### app/views/todo/index.html.erb
+```html
+<h1>hello</h1>
+```
