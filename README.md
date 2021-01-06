@@ -83,3 +83,19 @@ rails generate controller Todo index --skip-routes
 ```html
 <h1>hello</h1>
 ```
+
+### rails MVC key value
+
+##### app/controllers/todo_controller.rb
+```ruby
+class TodoController < ApplicationController
+  def index
+    @key = 'value'
+  end
+end
+```
+
+##### app/views/todo/index.html.erb
+```html
+<h5><%= @key %></h5>
+```
