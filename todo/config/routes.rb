@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  get "/", to: "todo#index"
+  get "/" => "todo#index"
+  get "/playground" => "todo#playground"
 end
