@@ -50,3 +50,15 @@ not support windows 10
 ```
 rails new todo
 ```
+
+### run server
+
+optionを見る
+```
+rails s --help
+```
+
+サーバーを実行する
+```
+rails s
+```
