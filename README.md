@@ -10,6 +10,12 @@ ruby 3.0.0p0 (2020-12-25 revision 95aff21468) [x86_64-linux]
 gem 3.2.3
 ```
 
+### WSLセッティング
+https://github.com/h4ppyy/ror-todo/blob/master/docs/ror_mysql2_wsl.md  
+
+上のLINKをお参考してください。
+
+
 ### 始まり
 
 project
