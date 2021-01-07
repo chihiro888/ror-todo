@@ -7,6 +7,27 @@
 
 <p id="hoge">change red</p>
 
+<button onclick="test1()">test1</button>
+<button onclick="test2()">test2</button>
+<button onclick="test3()">test3</button>
+<button onclick="test4()">test4</button>
+
 <script>
   $("#hoge").css("color","red")
+
+  function test1() {
+    toastr.info('Are you the 6 fingered man?')
+  }
+
+  function test2() {
+    toastr.warning('Are you the 6 fingered man?')
+  }
+
+  function test3() {
+    toastr.success('Are you the 6 fingered man?')
+  }
+
+  function test4() {
+    toastr.error('Are you the 6 fingered man?')
+  }
 </script>
