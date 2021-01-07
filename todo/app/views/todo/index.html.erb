@@ -4,10 +4,16 @@
 
   <div class="row mt-4 debug">
     <div class="col-10">
-      <input type="text" class="form-control" placeholder="しなければならないことを書いてください">
+      <input id="input_content" type="text" class="form-control" placeholder="しなければならないことを書いてください">
     </div>  
     <div class="col-2 text-center">
-      <button type="button" class="btn btn-secondary w-100">書く</button>
+      <button 
+        type="button" 
+        class="btn btn-secondary w-100"
+        onclick="createTodo()"
+      >
+        書く
+      </button>
     </div>
   </div>
 
@@ -22,13 +28,57 @@
           <%= item.created_at %>
         </div>
         <div class="col-1 text-center">
-          <button type="button" class="btn btn-danger">削除</button>
+          <button 
+            type="button" 
+            class="btn btn-danger"
+            onclick="deleteTodo(<%= item.id %>)"
+          >
+            削除
+          </button>
         </div>
         <div class="col-1 text-center">
-          <button type="button" class="btn btn-success">完了</button>
+          <button 
+            type="button" 
+            class="btn btn-success"
+          >
+            完了
+          </button>
         </div>
       </div>
     <% end %>
 
   </div>
 </div>
+
+<script>
+  function createTodo() {
+    var input_content = $('#input_content').val();
+    var url = '/api/v1/create/todo';
+    var param = {
+      input_content: input_content
+    }
+    $.post(url, param)
+    .done(function(data) {
+      if (data.code === 200) {
+        location.reload();
+      } else {
+        alert(data.msg);
+      }
+    });
+  }
+
+  function deleteTodo(todo_id) {
+    var url = '/api/v1/delete/todo';
+    var param = {
+      todo_id: todo_id
+    }
+    $.post(url, param)
+    .done(function(data) {
+      if (data.code === 200) {
+        location.reload();
+      } else {
+        alert(data.msg);
+      }
+    });
+  }
+</script>
