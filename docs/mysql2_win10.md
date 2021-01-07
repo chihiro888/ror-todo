@@ -1,4 +1,4 @@
-# mysql2 issue
+# mysql2 issue in windows10 
 
 docker-compose.yml
 ```yml
@@ -90,3 +90,7 @@ gem 'mysql2', '~> 0.4.10'
 C:/Ruby30-x64/lib/ruby/gems/3.0.0/gems/bootsnap-1.5.1/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:23:in `require': cannot load such file -- Win32API (LoadError)
 Did you mean?  win32/sspi
 ```
+
+# summary
+
+I give up mysql2 in windows10
