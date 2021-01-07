@@ -1,5 +1,8 @@
+require "content"
+
 class TodoController < ApplicationController
   def index
-    @key = 'value'
+    contents = Content.all
+    @contents = contents
   end
 end

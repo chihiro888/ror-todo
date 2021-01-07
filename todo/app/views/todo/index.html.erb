@@ -13,35 +13,22 @@
 
   <div class="todo-list mt-4">
 
-    <div class="todo-item row mt-3 debug">
-      <div class="col-8">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius facilis in molestiae quod! Aut doloribus est illum iure porro sunt. Eius illo iusto maxime nihil possimus quae tempora voluptas voluptates.
+    <% for item in @contents %>
+      <div class="todo-item row mt-3 debug">
+        <div class="col-8">
+          <%= item.content %>
+        </div>
+        <div class="col-2 text-center">
+          <%= item.created_at %>
+        </div>
+        <div class="col-1 text-center">
+          <button type="button" class="btn btn-danger">削除</button>
+        </div>
+        <div class="col-1 text-center">
+          <button type="button" class="btn btn-success">完了</button>
+        </div>
       </div>
-      <div class="col-2 text-center">
-        2021.01.07 00:25
-      </div>
-      <div class="col-1 text-center">
-        <button type="button" class="btn btn-danger">削除</button>
-      </div>
-      <div class="col-1 text-center">
-        <button type="button" class="btn btn-success">完了</button>
-      </div>
-    </div>
-
-    <div class="todo-item row mt-3 debug">
-      <div class="col-8">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius facilis in molestiae quod! Aut doloribus est illum iure porro sunt. Eius illo iusto maxime nihil possimus quae tempora voluptas voluptates.
-      </div>
-      <div class="col-2 text-center">
-        2021.01.07 00:25
-      </div>
-      <div class="col-1 text-center">
-        <button type="button" class="btn btn-danger">削除</button>
-      </div>
-      <div class="col-1 text-center">
-        <button type="button" class="btn btn-success">完了</button>
-      </div>
-    </div>
+    <% end %>
 
   </div>
 </div>
