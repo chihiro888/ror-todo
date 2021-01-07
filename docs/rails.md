@@ -36,3 +36,11 @@ end
 ```html
 <h5><%= @key %></h5>
 ```
+
+### rails model
+```
+rails generate model Todo content:string
+```
+```
+rails db:migrate
+```
