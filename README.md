@@ -78,11 +78,3 @@ read, update, delete, create API
 improve bootstrap design and responsive web
 add toastr library
 ```
-
-##### version 3 (開発中)
-
-```
-auth user system
-- create user
-- login user
-```
