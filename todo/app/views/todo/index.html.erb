@@ -1,6 +1,9 @@
 <div class="container debug">
 
-  <h1 class="text-center mt-5">TO-DO</h1>
+  <h1 class="text-center mt-5">TO DO リスト</h1>
+  <div class="text-center sub-title">
+    開発勉強のため必要な技術を使いました
+  </div>
 
   <div class="row mt-4 debug">
     <div class="col-10">
@@ -9,7 +12,7 @@
     <div class="col-2 text-center">
       <button 
         type="button" 
-        class="btn btn-secondary w-100"
+        class="btn btn-outline-primary w-100"
         onclick="createTodo()"
       >
         書く
@@ -23,7 +26,6 @@
 </div>
 
 <script>
-
   $(document).ready(function(){
     // enter key bind
     $('#input_content').keypress(function(event){
@@ -65,10 +67,11 @@
           if (el.complete_yn === 'Y') {
             var complete_btn = ''
           } else {
+            // back quote - IE not support
             var complete_btn = `
               <button 
                 type="button" 
-                class="btn btn-success"
+                class="btn btn-outline-success"
                 onclick="updateTodo(${el.id})"
               >
                 完了
@@ -76,24 +79,25 @@
             `
           }
           
+          // back quote - IE not support
           var item = `
             <div class="todo-item row mt-3 debug">
-              <div class="col-8">
+              <div class="col-md-8">
                 ${el.content}
               </div>
-              <div class="col-2 text-center">
+              <div class="col-md-2 text-center">
                 ${created_at}
               </div>
-              <div class="col-1 text-center">
+              <div class="col-md-1 text-center">
                 <button 
                   type="button" 
-                  class="btn btn-danger"
+                  class="btn btn-outline-danger"
                   onclick="deleteTodo(${el.id})"
                 >
                   削除
                 </button>
               </div>
-              <div class="col-1 text-center">
+              <div class="col-md-1 text-center">
                 ${complete_btn}
               </div>
             </div>
@@ -102,6 +106,10 @@
         });
       }
     });
+  }
+
+  function formInit() {
+    $('#input_content').val('');
   }
 
   function createTodo() {
@@ -114,6 +122,7 @@
     .done(function(data) {
       if (data.code === 200) {
         readTodo();
+        formInit();
       } else {
         alert(data.msg);
       }
