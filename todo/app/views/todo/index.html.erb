@@ -22,6 +22,10 @@
 
   <div id="todo_list" class="todo-list mt-4">
   </div>
+
+  <div id="todo_null" class="todo-null text-center">
+    まだ登録されたTO DOがありません。
+  </div>
   
 </div>
 
@@ -61,6 +65,15 @@
     .done(function(data) {
       if (data.code === 200) {
         var data = data.data;
+
+        // null logic
+        if (data.length === 0) {
+          $('#todo_null').show();
+          return false;
+        } else {
+          $('#todo_null').hide(); 
+        }
+
         data.forEach(el => {
           var created_at = strToDateFormat(el.created_at);
 
