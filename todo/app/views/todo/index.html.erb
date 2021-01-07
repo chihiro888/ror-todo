@@ -6,10 +6,10 @@
   </div>
 
   <div class="row mt-4 debug">
-    <div class="col-10">
+    <div class="col-8 col-sm-10">
       <input id="input_content" type="text" class="form-control" placeholder="しなければならないことを書いてください">
     </div>  
-    <div class="col-2 text-center">
+    <div class="col-4 col-sm-2 text-center">
       <button 
         type="button" 
         class="btn btn-outline-primary w-100"
@@ -71,7 +71,7 @@
             var complete_btn = `
               <button 
                 type="button" 
-                class="btn btn-outline-success"
+                class="btn btn-outline-success w-100 mt-lg-0 mt-2"
                 onclick="updateTodo(${el.id})"
               >
                 完了
@@ -82,22 +82,22 @@
           // back quote - IE not support
           var item = `
             <div class="todo-item row mt-3 debug">
-              <div class="col-md-8">
+              <div class="col-lg-8">
                 ${el.content}
               </div>
-              <div class="col-md-2 text-center">
+              <div class="col-lg-2 text-center mt-lg-0 mt-3">
                 ${created_at}
               </div>
-              <div class="col-md-1 text-center">
+              <div class="col-lg-1 text-center">
                 <button 
                   type="button" 
-                  class="btn btn-outline-danger"
+                  class="btn btn-outline-danger w-100 mt-lg-0 mt-3"
                   onclick="deleteTodo(${el.id})"
                 >
                   削除
                 </button>
               </div>
-              <div class="col-md-1 text-center">
+              <div class="col-lg-1 text-center">
                 ${complete_btn}
               </div>
             </div>
