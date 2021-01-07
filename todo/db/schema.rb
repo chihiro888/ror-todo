@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2021_01_07_074430) do
 
   create_table "contents", charset: "latin1", force: :cascade do |t|
     t.string "content"
+    t.string "complete_yn", limit: 1, default: "N"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

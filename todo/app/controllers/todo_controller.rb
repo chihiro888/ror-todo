@@ -31,6 +31,15 @@ class TodoController < ApplicationController
     render :json => { code: 200 }
   end
 
+  def update
+    todo_id = params[:todo_id]
+
+    content = Content.find_by(id: todo_id)
+    content.update(complete_yn: 'Y')
+
+    render :json => { code: 200 }
+  end
+
   def playground
     @key = "value"
   end

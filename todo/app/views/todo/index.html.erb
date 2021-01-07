@@ -37,12 +37,15 @@
           </button>
         </div>
         <div class="col-1 text-center">
-          <button 
-            type="button" 
-            class="btn btn-success"
-          >
-            完了
-          </button>
+          <% if item.complete_yn == 'N' %>
+            <button 
+              type="button" 
+              class="btn btn-success"
+              onclick="updateTodo(<%= item.id %>)"
+            >
+              完了
+            </button>
+          <% end %>
         </div>
       </div>
     <% end %>
@@ -69,6 +72,21 @@
 
   function deleteTodo(todo_id) {
     var url = '/api/v1/delete/todo';
+    var param = {
+      todo_id: todo_id
+    }
+    $.post(url, param)
+    .done(function(data) {
+      if (data.code === 200) {
+        location.reload();
+      } else {
+        alert(data.msg);
+      }
+    });
+  }
+
+  function updateTodo(todo_id) {
+    var url = '/api/v1/update/todo';
     var param = {
       todo_id: todo_id
     }
