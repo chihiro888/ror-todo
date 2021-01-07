@@ -18,43 +18,8 @@
   </div>
 
   <div id="todo_list" class="todo-list mt-4">
-
-    <!--
-    <% for item in @contents %>
-      <div class="todo-item row mt-3 debug">
-        <div class="col-8">
-          <%= item.content %>
-        </div>
-        <div class="col-2 text-center">
-          <%= item.created_at.strftime('%Y.%m.%d %H:%m') %>
-        </div>
-        <div class="col-1 text-center">
-          <button 
-            type="button" 
-            class="btn btn-danger"
-            onclick="deleteTodo(<%= item.id %>)"
-          >
-            削除
-          </button>
-        </div>
-        <div class="col-1 text-center">
-          <% if item.complete_yn == 'N' %>
-            <button 
-              type="button" 
-              class="btn btn-success"
-              onclick="updateTodo(<%= item.id %>)"
-            >
-              完了
-            </button>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-    -->
-
-
-
   </div>
+  
 </div>
 
 <script>
