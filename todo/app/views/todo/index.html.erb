@@ -17,8 +17,9 @@
     </div>
   </div>
 
-  <div class="todo-list mt-4">
+  <div id="todo_list" class="todo-list mt-4">
 
+    <!--
     <% for item in @contents %>
       <div class="todo-item row mt-3 debug">
         <div class="col-8">
@@ -49,11 +50,95 @@
         </div>
       </div>
     <% end %>
+    -->
+
+
 
   </div>
 </div>
 
 <script>
+
+  $(document).ready(function(){
+    // enter key bind
+    $('#input_content').keypress(function(event){
+      var keycode = (event.keyCode ? event.keyCode : event.which);
+      if(keycode == '13'){
+        createTodo();
+      }
+    });
+
+    // init function
+    readTodo();
+  });
+
+  function strToDateFormat(date){
+    var date = new Date(date);
+    var Y = date.getFullYear()
+    var M = ("00" + (date.getMonth()+1)).slice(-2)
+    var D = ("00" + date.getDate()).slice(-2)
+    var h = ("00" + date.getHours()).slice(-2)
+    var m = ("00" + date.getMinutes()).slice(-2)
+    var s = ("00" + date.getSeconds()).slice(-2)
+
+    return `${Y}.${M}.${D} ${h}:${m}`
+    // return Y + M + D + h + m + s
+  }
+
+  function readTodo() {
+    $('#todo_list').empty();
+
+    var url = '/api/v1/read/todo';
+    var param = {}
+    $.get(url, param)
+    .done(function(data) {
+      if (data.code === 200) {
+        var data = data.data;
+        data.forEach(el => {
+          var created_at = strToDateFormat(el.created_at);
+
+          if (el.complete_yn === 'Y') {
+            var complete_btn = ''
+          } else {
+            var complete_btn = `
+              <button 
+                type="button" 
+                class="btn btn-success"
+                onclick="updateTodo(${el.id})"
+              >
+                完了
+              </button>
+            `
+          }
+          
+          var item = `
+            <div class="todo-item row mt-3 debug">
+              <div class="col-8">
+                ${el.content}
+              </div>
+              <div class="col-2 text-center">
+                ${created_at}
+              </div>
+              <div class="col-1 text-center">
+                <button 
+                  type="button" 
+                  class="btn btn-danger"
+                  onclick="deleteTodo(${el.id})"
+                >
+                  削除
+                </button>
+              </div>
+              <div class="col-1 text-center">
+                ${complete_btn}
+              </div>
+            </div>
+          `
+          $('#todo_list').append(item);
+        });
+      }
+    });
+  }
+
   function createTodo() {
     var input_content = $('#input_content').val();
     var url = '/api/v1/create/todo';
@@ -63,7 +148,7 @@
     $.post(url, param)
     .done(function(data) {
       if (data.code === 200) {
-        location.reload();
+        readTodo();
       } else {
         alert(data.msg);
       }
@@ -78,7 +163,7 @@
     $.post(url, param)
     .done(function(data) {
       if (data.code === 200) {
-        location.reload();
+        readTodo();
       } else {
         alert(data.msg);
       }
@@ -93,7 +178,7 @@
     $.post(url, param)
     .done(function(data) {
       if (data.code === 200) {
-        location.reload();
+        readTodo();
       } else {
         alert(data.msg);
       }

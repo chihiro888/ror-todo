@@ -7,6 +7,11 @@ class TodoController < ApplicationController
     @contents = contents
   end
 
+  def read
+    contents = Content.all.order(created_at: :desc)
+    render :json => { code: 200, data: contents }
+  end
+
   def create
     input_content = params[:input_content]
 
