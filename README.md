@@ -62,3 +62,19 @@ railsプロジェクトです。
 ##### version 1
 
 ![version1](https://github.com/h4ppyy/ror-todo/blob/master/demo/version1.png?raw=true "version1")
+
+```
+read Server Side Rendering
+update, delete, create API
+```
+
+##### version 2
+
+![version2](https://github.com/h4ppyy/ror-todo/blob/master/demo/version2.gif?raw=true "version2")
+
+```
+read Client Side Rendering
+read, update, delete, create API
+improve bootstrap design and responsive web
+add toastr library
+```
