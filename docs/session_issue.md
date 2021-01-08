@@ -12,8 +12,9 @@ POST METHODでsessionを呼び込んだら作動しない
 
 ### reference
 
-https://stackoverflow.com/questions/18422182/rails-sessions-not-saving
+https://stackoverflow.com/questions/18422182/rails-sessions-not-saving  
 
+https://qiita.com/naberina/items/d3b14521e78e0daccdcd  
 ```
 If the security token doesn't match what was expected, the session will be reset
 ```
