@@ -83,11 +83,24 @@
         var data = data.data;
         data.forEach(el => {
           var item = `
-            <div class="user-item text-center">${el.username}</div>
+            <div class="user-item text-center" onclick="login(${el.id})">${el.username}</div>
           `
           $('#user_list').append(item);
         })
         initSlick();
+      }
+    })
+  }
+
+  function login(id) {
+    var url = '/api/v1/login/user';
+    var param = {
+      id: id
+    }
+    $.post(url, param)
+    .done(function(data) {
+      if (data.code === 200) {
+        toastr.success('ログインしました。');
       }
     })
   }

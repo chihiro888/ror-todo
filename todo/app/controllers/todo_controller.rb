@@ -10,6 +10,8 @@ class TodoController < ApplicationController
   end
 
   def read
+    puts "todo-read:session[:id] = #{session[:id]}"
+
     contents = Content.all.order(created_at: :desc)
     render :json => { code: 200, data: contents }
   end

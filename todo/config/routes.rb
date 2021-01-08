@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get "/api/v1/read/user" => "user#read"
   post "/api/v1/create/user" => "user#create"
+  post "/api/v1/login/user" => "user#login"
 
   get "/playground" => "todo#playground"
 end
