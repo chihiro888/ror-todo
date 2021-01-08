@@ -44,3 +44,6 @@ rails generate model Todo content:string
 ```
 rails db:migrate
 ```
+```
+rails generate model User username:string
+```

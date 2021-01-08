@@ -6,5 +6,8 @@ Rails.application.routes.draw do
   post "/api/v1/delete/todo" => "todo#delete"
   post "/api/v1/update/todo" => "todo#update"
 
+  get "/api/v1/read/user" => "user#read"
+  post "/api/v1/create/user" => "user#create"
+
   get "/playground" => "todo#playground"
 end

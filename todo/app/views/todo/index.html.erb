@@ -6,15 +6,15 @@
   </div>
 
   <div class="row mt-4 debug mrl-30">
-    <div class="user-list">
-      <div class="user-item text-center">staff001</div>
+    <div id="user_list" class="user-list">
+      <%# <div class="user-item text-center">staff001</div>
       <div class="user-item text-center">yasda</div>
       <div class="user-item text-center">hackx888</div>
       <div class="user-item text-center">helloworld</div>
       <div class="user-item text-center">wsl777</div>
       <div class="user-item text-center">rose369</div>
       <div class="user-item text-center">suntory</div>
-      <div class="user-item text-center">mouse999</div>
+      <div class="user-item text-center">mouse999</div> %>
     </div>
   </div>
 
@@ -54,14 +54,16 @@
 
     // init function
     readTodo();
+    readUser();
+  });
 
-    // init slick
+  function initSlick() {
     $('.user-list').slick({
       infinite: true,
       slidesToShow: 5,
       slidesToScroll: 3
     });
-  });
+  }
 
   function strToDateFormat(date){
     var date = new Date(date);
@@ -74,6 +76,26 @@
 
     return `${Y}.${M}.${D} ${h}:${m}`
     // return Y + M + D + h + m + s
+  }
+
+  function readUser() {
+    $('#user_list').empty();
+
+    var url = '/api/v1/read/user';
+    var param = {}
+    $.get(url, param)
+    .done(function(data) {
+      if (data.code === 200) {
+        var data = data.data;
+        data.forEach(el => {
+          var item = `
+            <div class="user-item text-center">${el.username}</div>
+          `
+          $('#user_list').append(item);
+        })
+        initSlick();
+      }
+    })
   }
 
   function readTodo() {

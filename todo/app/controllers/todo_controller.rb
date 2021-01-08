@@ -1,4 +1,6 @@
 require "content"
+require "user"
+
 
 class TodoController < ApplicationController
   def index
