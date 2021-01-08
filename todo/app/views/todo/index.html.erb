@@ -59,6 +59,17 @@
     });
   }
 
+  function set_csrftoken() {
+    $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
+      if (!options.crossDomain) {
+        const token = $('meta[name="csrf-token"]').attr('content');
+        if (token) {
+          return jqXHR.setRequestHeader('X-CSRF-Token', token);
+        }
+      }
+    });
+  }
+
   function strToDateFormat(date){
     var date = new Date(date);
     var Y = date.getFullYear()
@@ -93,6 +104,7 @@
   }
 
   function login(id) {
+    set_csrftoken();
     var url = '/api/v1/login/user';
     var param = {
       id: id
@@ -100,7 +112,8 @@
     $.post(url, param)
     .done(function(data) {
       if (data.code === 200) {
-        toastr.success('ログインしました。');
+        toastr.success(data.data.username + ' さん、ログインしました。');
+        readTodo();
       }
     })
   }
@@ -175,6 +188,7 @@
   }
 
   function createTodo() {
+    set_csrftoken();
     var input_content = $('#input_content').val();
     var url = '/api/v1/create/todo';
     var param = {
@@ -193,6 +207,7 @@
   }
 
   function deleteTodo(todo_id) {
+    set_csrftoken();
     var url = '/api/v1/delete/todo';
     var param = {
       todo_id: todo_id
@@ -209,6 +224,7 @@
   }
 
   function updateTodo(todo_id) {
+    set_csrftoken();
     var url = '/api/v1/update/todo';
     var param = {
       todo_id: todo_id

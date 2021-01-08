@@ -1,19 +1,19 @@
 <h1>rails playground</h1>
 
+<h1>context test</h1>
 <h5><%= @key %></h5>
 
 
-<h3>jquery test</h3>
-
+<h1>jquery test</h1>
 <p id="hoge">change red</p>
 
+<h1>toastr test</h1>
 <button onclick="test1()">test1</button>
 <button onclick="test2()">test2</button>
 <button onclick="test3()">test3</button>
 <button onclick="test4()">test4</button>
 
-<h1>slick</h1>
-
+<h1>slick test</h1>
 <div class="single-item">
   <div><h3>1</h3></div>
   <div><h3>2</h3></div>
@@ -22,6 +22,10 @@
   <div><h3>5</h3></div>
   <div><h3>6</h3></div>
 </div>
+
+<h1>session test</h1>
+<button onclick="saveSession()">save session</button>
+<button onclick="loadSession()">load session</button>
 
 <script>
   $('.single-item').slick();
@@ -42,5 +46,35 @@
 
   function test4() {
     toastr.error('Are you the 6 fingered man?')
+  }
+
+  function set_csrftoken() {
+    $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
+        if (!options.crossDomain) {
+            const token = $('meta[name="csrf-token"]').attr('content');
+            if (token) {
+                return jqXHR.setRequestHeader('X-CSRF-Token', token);
+            }
+        }
+    });
+  }
+
+  function saveSession() {
+    var url = '/save/session';
+    var param = {}
+    $.get(url, param)
+    .done(function(data) {
+      console.log('data = ', data);
+    })
+  }
+
+  function loadSession() {
+    set_csrftoken();
+    var url = '/load/session';
+    var param = {}
+    $.post(url, param)
+    .done(function(data) {
+      console.log('data = ', data);
+    })
   }
 </script>

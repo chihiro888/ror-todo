@@ -10,5 +10,8 @@ Rails.application.routes.draw do
   post "/api/v1/create/user" => "user#create"
   post "/api/v1/login/user" => "user#login"
 
+  get "/save/session" => "user#save"
+  post "/load/session" => "user#load"
+
   get "/playground" => "todo#playground"
 end

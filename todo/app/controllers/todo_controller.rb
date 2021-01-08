@@ -7,14 +7,14 @@ class TodoController < ApplicationController
   end
 
   def read
-    id = 1
+    id = session[:id]
     contents = Content.where(user_id: id).order(created_at: :desc)
     
     render :json => { code: 200, data: contents }
   end
 
   def create
-    id = 1
+    id = session[:id]
     input_content = params[:input_content]
 
     # validate
@@ -32,7 +32,7 @@ class TodoController < ApplicationController
   end
 
   def delete
-    id = 1
+    id = session[:id]
     todo_id = params[:todo_id]
 
     Content.destroy_by(id: todo_id, user_id: id)
@@ -41,7 +41,7 @@ class TodoController < ApplicationController
   end
 
   def update
-    id = 1
+    id = session[:id]
     todo_id = params[:todo_id]
 
     content = Content.find_by(id: todo_id, user_id: id)

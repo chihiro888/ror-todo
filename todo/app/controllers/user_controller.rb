@@ -27,7 +27,17 @@ class UserController < ApplicationController
     id = params[:id]
 
     session[:id] = id
+    user = User.find_by(id: id)
 
+    render :json => { code: 200, data: user }
+  end
+
+  def save
+    session[:hello] = 999
     render :json => { code: 200 }
+  end
+
+  def load
+    render :json => { code: 200, session: session[:hello] }
   end
 end
