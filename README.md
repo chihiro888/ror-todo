@@ -81,6 +81,8 @@ add toastr library
 
 ##### version 3 (開発中)
 
+![version3](https://github.com/h4ppyy/ror-todo/blob/master/demo/version3.gif?raw=true "version3")
+
 ```
 auth user system
 - login user
