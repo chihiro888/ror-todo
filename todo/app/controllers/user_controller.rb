@@ -3,15 +3,6 @@ require "user"
 
 class UserController < ApplicationController
   def read
-
-    puts "--------------------------------------"
-    puts "user-read:session = #{session}"
-    puts "user-read:session.keys = #{session.keys}"
-    puts "user-read:session.keys = #{session[:session_id]}"
-    puts "user-read:session[:id] = #{session[:current_user_id]}"
-    puts "@_current_user = #{@_current_user}"
-    puts "--------------------------------------"
-
     users = User.all.order(created_at: :desc)
     render :json => { code: 200, data: users }
   end
@@ -35,12 +26,7 @@ class UserController < ApplicationController
   def login
     id = params[:id]
 
-    puts "login:id = #{id}"
-
-    session[:current_user_id] = id
-    @_current_user = 333
-
-    puts "login:session[:id] = #{session[:current_user_id]}"
+    session[:id] = id
 
     render :json => { code: 200 }
   end

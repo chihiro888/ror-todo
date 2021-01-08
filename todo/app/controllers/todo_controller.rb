@@ -4,19 +4,17 @@ require "user"
 
 class TodoController < ApplicationController
   def index
-    contents = Content.all.order(created_at: :desc)
-
-    @contents = contents
   end
 
   def read
-    puts "todo-read:session[:id] = #{session[:id]}"
-
-    contents = Content.all.order(created_at: :desc)
+    id = 1
+    contents = Content.where(user_id: id).order(created_at: :desc)
+    
     render :json => { code: 200, data: contents }
   end
 
   def create
+    id = 1
     input_content = params[:input_content]
 
     # validate
@@ -27,23 +25,26 @@ class TodoController < ApplicationController
 
     content = Content.new
     content.content = input_content
+    content.user_id = id
     content.save()
 
     render :json => { code: 200 }
   end
 
   def delete
+    id = 1
     todo_id = params[:todo_id]
 
-    Content.destroy_by(id: todo_id)
+    Content.destroy_by(id: todo_id, user_id: id)
 
     render :json => { code: 200 }
   end
 
   def update
+    id = 1
     todo_id = params[:todo_id]
 
-    content = Content.find_by(id: todo_id)
+    content = Content.find_by(id: todo_id, user_id: id)
     content.update(complete_yn: 'Y')
 
     render :json => { code: 200 }
