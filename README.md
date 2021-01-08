@@ -83,6 +83,6 @@ add toastr library
 
 ```
 auth user system
-- create user
 - login user
+- ui used slick
 ```
